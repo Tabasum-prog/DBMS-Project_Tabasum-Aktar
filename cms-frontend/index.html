@@ -5,104 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMS - Login</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('classroom.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .login-container { display: flex; justify-content: center; align-items: center; width: 100%; padding: 20px; box-sizing: border-box; }
-        .login-card {
-            background-color: #ffffff;
-            padding: 50px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            width: 100%;
-            max-width: 700px;
-            border: 1px solid #eaeaea;
-            text-align: center;
-            box-sizing: border-box;
-        }
-        .objective-callout {
-            background-color: #f9fbfd;
-            border-left: 5px solid #3498db;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 30px 0;
-            text-align: left;
-        }
-        .objective-p {
-            color: #555;
-            line-height: 1.6;
-            font-size: 0.95em;
-            font-style: italic;
-            margin: 0;
-        }
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; margin-bottom: 5px; }
-        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        .btn { display: none; width: 100%; padding: 10px; background-color: #2980b9; color: white; text-align: center; text-decoration: none; border-radius: 4px; box-sizing: border-box; font-weight: bold; margin-top: 15px; }
-        .btn:hover { background-color: #2471a3; }
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { margin: 0; padding: 0; display: flex; height: 100vh; overflow: hidden; background-color: #f9fbfd; }
+        
+        /* Split Screen Layout */
+        .left-panel { flex: 1; padding: 10%; display: flex; flex-direction: column; justify-content: center; background: #ffffff; }
+        .right-panel { flex: 1; position: relative; background: linear-gradient(rgba(0, 10, 30, 0.7), rgba(0, 10, 30, 0.7)), url('classroom.jpg') center/cover; display: flex; flex-direction: column; justify-content: center; padding: 10%; }
+        
+        /* Typography & Branding */
+        .main-title { font-size: 3.5em; color: #ffffff; margin-bottom: 20px; line-height: 1.1; font-weight: 700; }
+        .subtitle { color: #3498db; font-size: 1.2em; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .about-heading { font-size: 2.5em; color: #2c3e50; margin-bottom: 20px; font-weight: 700; line-height: 1.2; }
+        .objective-text { color: #555; line-height: 1.8; font-size: 1.1em; margin-bottom: 40px; }
+        
+        /* Login Button */
+        .top-nav { position: absolute; top: 40px; right: 40px; z-index: 10; }
+        .login-btn { text-decoration: none; background: #3498db; color: white; padding: 12px 30px; border-radius: 30px; font-weight: 600; font-size: 1.1em; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .login-btn:hover { background: #2980b9; }
+
+        /* Developer Credits */
+        .credits { margin-top: auto; border-top: 2px solid #eee; padding-top: 20px; color: #7f8c8d; font-size: 0.9em; line-height: 1.6; }
+        .credits strong { color: #34495e; font-size: 1.1em; display: block; margin-bottom: 5px; }
+
+        /* Pure CSS Modal for Login */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+        .modal-overlay:target { display: flex; } /* The Magic CSS Trigger */
+        .close-btn { position: absolute; top: 20px; right: 30px; font-size: 3em; color: white; text-decoration: none; }
+        
+        /* Existing Login Card Styling (Preserved & Adjusted for Modal) */
+        .login-card { background-color: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 100%; max-width: 450px; position: relative; }
+        .login-card h2 { text-align: center; color: #2c3e50; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: #34495e; font-weight: 500; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #bdc3c7; border-radius: 4px; }
+        .login-submit { display: none; text-align: center; background-color: #2980b9; color: white; text-decoration: none; padding: 12px; border-radius: 4px; font-weight: bold; margin-top: 20px; }
+        .login-submit:hover { background-color: #2471a3; }
         
         /* The CSS Magic: Show only the button that matches the selected dropdown option */
         .login-logic-wrapper:has(option[value="admin"]:checked) .login-admin { display: block; }
         .login-logic-wrapper:has(option[value="faculty"]:checked) .login-faculty { display: block; }
         .login-logic-wrapper:has(option[value="student"]:checked) .login-student { display: block; }
-
     </style>
 </head>
 <body>
-    <div class="login-container">
+
+    <!-- LEFT PANEL: Info & Credits -->
+    <div class="left-panel">
+        <h2 class="about-heading">Complete academic and classroom control</h2>
+        <p class="objective-text">
+            Welcome to the Classroom Management System. Our primary objective is centralizing academic records, optimizing attendance tracking, and bridging communication between Admin, Teachers, and Students. We are dedicated to providing a seamless, state-of-the-art educational environment.
+        </p>
+        
+        <div class="credits">
+            <strong>Classroom Management System</strong>
+            Developed by Tabasum Aktar, Department of Computer Science and Engineering<br>
+            IUBAT - International University of Business Agriculture and Technology
+        </div>
+    </div>
+
+    <!-- RIGHT PANEL: Hero Image & Title -->
+    <div class="right-panel">
+        <div class="top-nav">
+            <!-- This link triggers the modal -->
+            <a href="#login-modal" class="login-btn">Login</a>
+        </div>
+        
+        <div class="subtitle">Smart Academic Operations</div>
+        <h1 class="main-title">Classroom<br>Management<br>System</h1>
+    </div>
+
+    <!-- PURE CSS MODAL (Hidden by default, shown when #login-modal is targeted) -->
+    <div id="login-modal" class="modal-overlay">
+        <!-- Clicking this 'X' removes the target, closing the modal -->
+        <a href="#" class="close-btn">&times;</a>
+        
         <div class="login-card">
-            <h2 style="text-align: center; margin-bottom: 5px; color: #2c3e50;">Classroom Management System</h2>
-            <div style="text-align: center; margin-bottom: 15px; font-size: 0.9em;">
-                <a href="#" style="text-decoration: none; color: #2980b9;">Home</a> | <a href="#" style="text-decoration: none; color: #2980b9;">Forms</a>
-            </div>
-            <hr style="border: 0; border-top: 1px solid #e0e0e0; margin: 25px 0;">
-            
-            <h3 style="color: #2c3e50; font-weight: 600; margin-bottom: 5px;">Our Objective</h3>
-            <div class="objective-callout">
-                <p class="objective-p">
-                    Welcome to the Classroom Management System. Our primary objective is centralizing academic records, optimizing attendance tracking, and bridging communication between Admin, Teachers, and Students. We are dedicated to providing a seamless, state-of-the-art educational environment.
-                </p>
-            </div>
-            
-            <hr style="border: 0; border-top: 1px solid #e0e0e0; margin: 25px 0;">
+            <h2>CMS Login</h2>
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" placeholder="user@university.edu">
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" placeholder="********">
+                <input type="password" placeholder="••••••••">
             </div>
             <div class="login-logic-wrapper">
                 <div class="form-group">
-                    <label for="role">Role</label>
+                    <label>Role</label>
                     <select id="role" name="role">
                         <option value="admin" selected>Administrator</option>
                         <option value="faculty">Faculty</option>
                         <option value="student">Student</option>
                     </select>
                 </div>
-                <a href="admin_users.html" class="btn login-admin">Login</a>
-                <a href="faculty_timetable.html" class="btn login-faculty">Login</a>
-                <a href="student_registration.html" class="btn login-student">Login</a>
+                <!-- Preserved CSS Routing links (Update hrefs to your actual files as needed) -->
+                <a href="admin_users.html" class="login-submit login-admin">Login</a>
+                <a href="faculty_timetable.html" class="login-submit login-faculty">Login</a>
+                <a href="student_registration.html" class="login-submit login-student">Login</a>
             </div>
-            
-            <div class="developer-credits" style="margin-top: 35px; padding-top: 20px; border-top: 1px solid #e0e0e0; text-align: center; color: #7f8c8d; font-size: 0.85em; line-height: 1.5; clear: both;">
-                <p style="margin: 0; color: #34495e;"><strong>Classroom Management System</strong></p>
-                <p style="margin: 5px 0 0 0;">Developed by Tabasum Aktar, Department of Computer Science and Engineering</p>
-                <p style="margin: 2px 0 0 0;">IUBAT - International University of Business Agriculture and Technology</p>
+            <div style="text-align: center; margin-top: 15px; font-size: 0.9em;">
+                <a href="password_reset.html" style="color: #2980b9; text-decoration: none;">Forgot Password?</a>
             </div>
         </div>
     </div>
+
 </body>
 </html>
