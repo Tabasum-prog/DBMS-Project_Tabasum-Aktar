@@ -5,10 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMS - Login</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f6f8; color: #333; margin: 0; padding: 0; }
-        .login-container { display: flex; justify-content: center; align-items: center; height: 100vh; }
-        .login-card { background-color: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 650px; width: 100%; text-align: center; box-sizing: border-box; }
-        .form-group { margin-bottom: 15px; text-align: left; }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('classroom.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .login-container { display: flex; justify-content: center; align-items: center; width: 100%; padding: 20px; box-sizing: border-box; }
+        .login-card {
+            background-color: #ffffff;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 700px;
+            border: 1px solid #eaeaea;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .objective-callout {
+            background-color: #f9fbfd;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        .objective-p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 0.95em;
+            font-style: italic;
+            margin: 0;
+        }
+        .form-group { margin-bottom: 20px; text-align: left; }
         .form-group label { display: block; margin-bottom: 5px; }
         .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
         .btn { display: none; width: 100%; padding: 10px; background-color: #2980b9; color: white; text-align: center; text-decoration: none; border-radius: 4px; box-sizing: border-box; font-weight: bold; margin-top: 15px; }
@@ -28,17 +65,16 @@
             <div style="text-align: center; margin-bottom: 15px; font-size: 0.9em;">
                 <a href="#" style="text-decoration: none; color: #2980b9;">Home</a> | <a href="#" style="text-decoration: none; color: #2980b9;">Forms</a>
             </div>
-            <hr style="border: 0; border-top: 1px solid #e0e0e0; margin-bottom: 15px;">
+            <hr style="border: 0; border-top: 1px solid #e0e0e0; margin: 25px 0;">
             
-            <h3 style="text-align: center; margin-bottom: 10px; color: #34495e;">Objective</h3>
-            <p style="text-align: center; font-size: 0.9em; line-height: 1.5; color: #555; margin-bottom: 15px; padding: 0 15px;">
-                Welcome to the Classroom Management System. Our primary objective is centralizing academic records, optimizing attendance tracking, and bridging communication between Admin, Teachers, and Students. We are dedicated to providing a seamless, state-of-the-art educational environment.
-            </p>
-            
-            <div style="text-align: center; margin-bottom: 25px;">
-                <img src="classroom.jpg" alt="Classroom with grey chairs and desks" style="display: block; margin: 0 auto; width: 100%; max-width: 400px; height: auto; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <h3 style="color: #2c3e50; font-weight: 600; margin-bottom: 5px;">Our Objective</h3>
+            <div class="objective-callout">
+                <p class="objective-p">
+                    Welcome to the Classroom Management System. Our primary objective is centralizing academic records, optimizing attendance tracking, and bridging communication between Admin, Teachers, and Students. We are dedicated to providing a seamless, state-of-the-art educational environment.
+                </p>
             </div>
-            <hr style="border: 0; border-top: 1px solid #e0e0e0; margin-bottom: 25px;">
+            
+            <hr style="border: 0; border-top: 1px solid #e0e0e0; margin: 25px 0;">
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" placeholder="user@university.edu">
