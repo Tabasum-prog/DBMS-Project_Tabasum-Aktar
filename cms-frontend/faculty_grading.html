@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty - Grading</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-container {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #27ae60;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar ul li a:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar ul li a.active {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-left: 4px solid #fff;
+        }
+
+        .logout-btn {
+            display: block;
+            margin: 30px 20px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            text-align: center;
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+            flex: 1;
+        }
+
+        .section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .section h3 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f9fa;
+        }
+
+        .simple-form {
+            max-width: 400px;
+            margin-bottom: 30px;
+        }
+
+        .simple-form input,
+        .simple-form select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .simple-form button,
+        .btn {
+            padding: 8px 15px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <h2>Faculty Portal</h2>
+            <ul>
+                <li><a href="faculty_timetable.html">My Timetable</a></li>
+                <li><a href="faculty_attendance.html">Mark Attendance</a></li>
+                <li><a href="faculty_grading.html" class="active">Assignments & Grading</a></li>
+            </ul>
+            <a href="index.html" class="logout-btn">Logout</a>
+        </div>
+        <div class="main-content">
+            <div class="section">
+                <h3>Assignments & Grading</h3>
+                <div class="simple-form">
+                    <h4>Create Assignment</h4>
+                    <form>
+                        <input type="text" placeholder="Assignment Title">
+                        <input type="number" placeholder="Max Marks">
+                        <button type="button">Create Assignment</button>
+                    </form>
+                </div>
+                <h4>Grade Submissions</h4>
+                <table>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Submission</th>
+                        <th>Marks</th>
+                    </tr>
+                    <tr>
+                        <td>Tabasum Aktar</td>
+                        <td><a href="#">tabasum_hw.pdf</a></td>
+                        <td><input type="text" placeholder="Marks" style="width: 80px;"></td>
+                    </tr>
+                </table>
+                <button class="btn">Save Grades</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

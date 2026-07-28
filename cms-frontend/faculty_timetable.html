@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty - Timetable</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f8; color: #333; margin: 0; padding: 0; }
+        .dashboard-container { display: flex; }
+        .sidebar { width: 250px; background-color: #27ae60; color: white; padding: 20px 0; position: fixed; height: 100vh; overflow-y: auto; }
+        .sidebar h2 { text-align: center; margin-bottom: 30px; }
+        .sidebar ul { list-style-type: none; padding: 0; margin: 0; }
+        .sidebar ul li a { display: block; padding: 15px 20px; color: white; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .sidebar ul li a:hover { background-color: rgba(0,0,0,0.1); }
+        .sidebar ul li a.active { background-color: rgba(0,0,0,0.2); border-left: 4px solid #fff; }
+        .logout-btn { display: block; margin: 30px 20px; padding: 10px; background-color: rgba(255,255,255,0.2); text-align: center; border-radius: 4px; color: white; text-decoration: none; }
+        .main-content { margin-left: 250px; padding: 30px; flex: 1; }
+        .section { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .section h3 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        table, th, td { border: 1px solid #ddd; }
+        th, td { padding: 12px; text-align: left; }
+        th { background-color: #f8f9fa; }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <h2>Faculty Portal</h2>
+            <ul>
+                <li><a href="faculty_timetable.html" class="active">My Timetable</a></li>
+                <li><a href="faculty_attendance.html">Mark Attendance</a></li>
+                <li><a href="faculty_grading.html">Assignments & Grading</a></li>
+            </ul>
+            <a href="index.html" class="logout-btn">Logout</a>
+        </div>
+        <div class="main-content">
+            <div class="section">
+                <h3>My Timetable</h3>
+                <table>
+                    <tr>
+                        <th>Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                    </tr>
+                    <tr>
+                        <td>09:00 AM</td>
+                        <td>CS101</td>
+                        <td>-</td>
+                        <td>CS101</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

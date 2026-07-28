@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS - Login</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f8; color: #333; margin: 0; padding: 0; }
+        .login-container { display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .login-card { background-color: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 650px; width: 100%; text-align: center; box-sizing: border-box; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .btn { display: none; width: 100%; padding: 10px; background-color: #2980b9; color: white; text-align: center; text-decoration: none; border-radius: 4px; box-sizing: border-box; font-weight: bold; margin-top: 15px; }
+        .btn:hover { background-color: #2471a3; }
+        
+        /* The CSS Magic: Show only the button that matches the selected dropdown option */
+        .login-logic-wrapper:has(option[value="admin"]:checked) .login-admin { display: block; }
+        .login-logic-wrapper:has(option[value="faculty"]:checked) .login-faculty { display: block; }
+        .login-logic-wrapper:has(option[value="student"]:checked) .login-student { display: block; }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h2 style="text-align: center; margin-bottom: 5px; color: #2c3e50;">Classroom Management System</h2>
+            <div style="text-align: center; margin-bottom: 15px; font-size: 0.9em;">
+                <a href="#" style="text-decoration: none; color: #2980b9;">Home</a> | <a href="#" style="text-decoration: none; color: #2980b9;">Forms</a>
+            </div>
+            <hr style="border: 0; border-top: 1px solid #e0e0e0; margin-bottom: 15px;">
+            
+            <h3 style="text-align: center; margin-bottom: 10px; color: #34495e;">Objective</h3>
+            <p style="text-align: center; font-size: 0.9em; line-height: 1.5; color: #555; margin-bottom: 15px; padding: 0 15px;">
+                Welcome to the Classroom Management System. Our primary objective is centralizing academic records, optimizing attendance tracking, and bridging communication between Admin, Teachers, and Students. We are dedicated to providing a seamless, state-of-the-art educational environment.
+            </p>
+            
+            <div style="text-align: center; margin-bottom: 25px;">
+                <img src="classroom.jpg" alt="Classroom with grey chairs and desks" style="display: block; margin: 0 auto; width: 100%; max-width: 400px; height: auto; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            </div>
+            <hr style="border: 0; border-top: 1px solid #e0e0e0; margin-bottom: 25px;">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="user@university.edu">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="********">
+            </div>
+            <div class="login-logic-wrapper">
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select id="role" name="role">
+                        <option value="admin" selected>Administrator</option>
+                        <option value="faculty">Faculty</option>
+                        <option value="student">Student</option>
+                    </select>
+                </div>
+                <a href="admin_users.html" class="btn login-admin">Login</a>
+                <a href="faculty_timetable.html" class="btn login-faculty">Login</a>
+                <a href="student_registration.html" class="btn login-student">Login</a>
+            </div>
+            
+            <div class="developer-credits" style="margin-top: 35px; padding-top: 20px; border-top: 1px solid #e0e0e0; text-align: center; color: #7f8c8d; font-size: 0.85em; line-height: 1.5; clear: both;">
+                <p style="margin: 0; color: #34495e;"><strong>Classroom Management System</strong></p>
+                <p style="margin: 5px 0 0 0;">Developed by Tabasum Aktar, Department of Computer Science and Engineering</p>
+                <p style="margin: 2px 0 0 0;">IUBAT - International University of Business Agriculture and Technology</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
